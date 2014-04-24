@@ -7,8 +7,8 @@
 package com.dthebus.gymweb.test.repository;
 
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
-import com.dthebus.gymweb.domain.FullMember;
-import com.dthebus.gymweb.repository.FullMemberRepository;
+import com.dthebus.gymweb.domain.SnackBar;
+import com.dthebus.gymweb.repository.SnackBarRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -23,49 +23,47 @@ import org.testng.annotations.Test;
  *
  * @author darren
  */
-public class FullMemberTest {
+public class SnackBarTest {
     
     public static ApplicationContext ctx;
     private Long id;
 
-    private static FullMemberRepository repo;
-    
-    public FullMemberTest() {
+    private static SnackBarRepository repo;
+    public SnackBarTest() {
     }
 
-    
-     @Test
-      public void createFullMember() {
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember p = new FullMember.Builder("Darren").surname("Thebus").build();
+      @Test
+      public void createSnackBar() {
+         repo = ctx.getBean(SnackBarRepository.class);
+         SnackBar p = new SnackBar.Builder("USN").price(125.55).build();
          repo.save(p);
          id = p.getId();
          Assert.assertNotNull(p);
       }
-     
-     @Test(dependsOnMethods = "createFullMember")
-     public void readFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
-         Assert.assertEquals(person.getName(), "Darren");
+      
+    @Test(dependsOnMethods = "createSnackBar")
+     public void readSnackBar(){
+         repo = ctx.getBean(SnackBarRepository.class);
+         SnackBar entity = repo.findOne(id);
+         Assert.assertEquals(entity.getName(), "USN");
       }
      
-    @Test(dependsOnMethods = "readFullMember")
-     private void updateFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
-         FullMember updatedperson = new FullMember.Builder("Darren").person(person).surname("Lee").build();
-         repo.save(updatedperson);
-         FullMember updatePerson = repo.findOne(id);
-         Assert.assertEquals(updatePerson.getSurname(), "Lee");
+    @Test(dependsOnMethods = "readSnackBar")
+     private void updateSnackBar(){
+         repo = ctx.getBean(SnackBarRepository.class);
+         SnackBar entity = repo.findOne(id);
+         SnackBar updatedentity = new SnackBar.Builder("USN").entity(entity).price(126.25).build();
+         repo.save(updatedentity);
+         SnackBar updateEntity = repo.findOne(id);
+         Assert.assertEquals(updateEntity.getPrice(), 126.25);
      }
      
-     @Test(dependsOnMethods = "updateFullMember")
-     private void deleteFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
+     @Test(dependsOnMethods = "updateSnackBar")
+     private void deleteSnackBar(){
+         repo = ctx.getBean(SnackBarRepository.class);
+         SnackBar person = repo.findOne(id);
          repo.delete(person);
-         FullMember deletedPerson = repo.findOne(id);
+         SnackBar deletedPerson = repo.findOne(id);
          Assert.assertNull(deletedPerson);
          }
 

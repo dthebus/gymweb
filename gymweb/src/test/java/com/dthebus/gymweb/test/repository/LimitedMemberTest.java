@@ -7,8 +7,8 @@
 package com.dthebus.gymweb.test.repository;
 
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
-import com.dthebus.gymweb.domain.FullMember;
-import com.dthebus.gymweb.repository.FullMemberRepository;
+import com.dthebus.gymweb.domain.LimitedMember;
+import com.dthebus.gymweb.repository.LimitedMemberRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -23,21 +23,18 @@ import org.testng.annotations.Test;
  *
  * @author darren
  */
-public class FullMemberTest {
-    
+public class LimitedMemberTest {
     public static ApplicationContext ctx;
     private Long id;
 
-    private static FullMemberRepository repo;
-    
-    public FullMemberTest() {
+    private static LimitedMemberRepository repo;
+    public LimitedMemberTest() {
     }
 
-    
-     @Test
+    @Test
       public void createFullMember() {
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember p = new FullMember.Builder("Darren").surname("Thebus").build();
+         repo = ctx.getBean(LimitedMemberRepository.class);
+         LimitedMember p = new LimitedMember.Builder("Darren").surname("Thebus").build();
          repo.save(p);
          id = p.getId();
          Assert.assertNotNull(p);
@@ -45,33 +42,35 @@ public class FullMemberTest {
      
      @Test(dependsOnMethods = "createFullMember")
      public void readFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
+         repo = ctx.getBean(LimitedMemberRepository.class);
+         LimitedMember person = repo.findOne(id);
          Assert.assertEquals(person.getName(), "Darren");
       }
      
     @Test(dependsOnMethods = "readFullMember")
      private void updateFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
-         FullMember updatedperson = new FullMember.Builder("Darren").person(person).surname("Lee").build();
+         repo = ctx.getBean(LimitedMemberRepository.class);
+         LimitedMember person = repo.findOne(id);
+         LimitedMember updatedperson = new LimitedMember.Builder("Darren").person(person).surname("Lee").build();
          repo.save(updatedperson);
-         FullMember updatePerson = repo.findOne(id);
+         LimitedMember updatePerson = repo.findOne(id);
          Assert.assertEquals(updatePerson.getSurname(), "Lee");
      }
      
      @Test(dependsOnMethods = "updateFullMember")
      private void deleteFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
+         repo = ctx.getBean(LimitedMemberRepository.class);
+         LimitedMember person = repo.findOne(id);
          repo.delete(person);
-         FullMember deletedPerson = repo.findOne(id);
+         LimitedMember deletedPerson = repo.findOne(id);
          Assert.assertNull(deletedPerson);
          }
 
+
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+            ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+  
     }
 
     @AfterClass

@@ -6,15 +6,13 @@
 
 package com.dthebus.gymweb.repository;
 
-import com.dthebus.gymweb.domain.FullMember;
+import com.dthebus.gymweb.domain.LimitedMember;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author darren
  */
-@Repository
-public interface FullMemberRepository extends JpaRepository<FullMember, Long>{
+public interface LimitedMemberRepository extends JpaRepository<LimitedMember, Long>{
     
 }

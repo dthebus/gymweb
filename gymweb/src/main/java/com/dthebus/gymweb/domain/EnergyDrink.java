@@ -7,7 +7,6 @@
 package com.dthebus.gymweb.domain;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,45 +17,45 @@ import javax.persistence.Id;
  * @author darren
  */
 @Entity
-public class FullMember implements Serializable {
+public class EnergyDrink implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    private String surname;
+private String name;
+    private double price;
      
-     private FullMember(Builder builder) {
+     private EnergyDrink(Builder builder) {
         id= builder.id;
         name = builder.name;
-        surname = builder.surname;
+        price = builder.price;
        }
-     private FullMember(){}
+     private EnergyDrink(){}
      
      public static class Builder {
 
         private Long id;
         private String name;
-        private String surname;
+        private double price;
         public Builder(String value) {
             this.name = value;
            
         }
         
        
-        public Builder person(FullMember person){
-            id = person.getId();
-            name = person.getName();
-            surname = person.getSurname();
+        public Builder entity(EnergyDrink entity){
+            id = entity.getId();
+            name = entity.getName();
+            price = entity.getPrice();
             return this;
             
         }
-        public Builder surname(String value) {
-            surname = value;
+        public Builder price(double value) {
+            price = value;
             return this;
         }
-        public FullMember build(){
-            return new FullMember(this);
+        public EnergyDrink build(){
+            return new EnergyDrink(this);
         }
 
     }
@@ -67,8 +66,8 @@ public class FullMember implements Serializable {
     public Long getId() {
         return id;
     }
-    public String getSurname(){
-    return surname;
+    public double getPrice(){
+    return price;
     }
    
 
@@ -82,10 +81,10 @@ public class FullMember implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof FullMember)) {
+        if (!(object instanceof EnergyDrink)) {
             return false;
         }
-        FullMember other = (FullMember) object;
+        EnergyDrink other = (EnergyDrink) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -94,7 +93,7 @@ public class FullMember implements Serializable {
 
     @Override
     public String toString() {
-        return "com.dthebus.gymweb.domain.FullMember[ id=" + id + " ]";
+        return "com.dthebus.gymweb.domain.EnergyDrink[ id=" + id + " ]";
     }
     
 }

@@ -7,7 +7,6 @@
 package com.dthebus.gymweb.domain;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,20 +17,20 @@ import javax.persistence.Id;
  * @author darren
  */
 @Entity
-public class FullMember implements Serializable {
+public class MemberRecruiter implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
+private String name;
     private String surname;
      
-     private FullMember(Builder builder) {
+     private MemberRecruiter(Builder builder) {
         id= builder.id;
         name = builder.name;
         surname = builder.surname;
        }
-     private FullMember(){}
+     private MemberRecruiter(){}
      
      public static class Builder {
 
@@ -44,7 +43,7 @@ public class FullMember implements Serializable {
         }
         
        
-        public Builder person(FullMember person){
+        public Builder person(MemberRecruiter person){
             id = person.getId();
             name = person.getName();
             surname = person.getSurname();
@@ -55,8 +54,8 @@ public class FullMember implements Serializable {
             surname = value;
             return this;
         }
-        public FullMember build(){
-            return new FullMember(this);
+        public MemberRecruiter build(){
+            return new MemberRecruiter(this);
         }
 
     }
@@ -73,19 +72,12 @@ public class FullMember implements Serializable {
    
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof FullMember)) {
+        if (!(object instanceof MemberRecruiter)) {
             return false;
         }
-        FullMember other = (FullMember) object;
+        MemberRecruiter other = (MemberRecruiter) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -94,7 +86,7 @@ public class FullMember implements Serializable {
 
     @Override
     public String toString() {
-        return "com.dthebus.gymweb.domain.FullMember[ id=" + id + " ]";
+        return "com.dthebus.gymweb.domain.MemberRecruiter[ id=" + id + " ]";
     }
     
 }

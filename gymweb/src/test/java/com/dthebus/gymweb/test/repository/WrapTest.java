@@ -7,8 +7,8 @@
 package com.dthebus.gymweb.test.repository;
 
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
-import com.dthebus.gymweb.domain.FullMember;
-import com.dthebus.gymweb.repository.FullMemberRepository;
+import com.dthebus.gymweb.domain.Wrap;
+import com.dthebus.gymweb.repository.WrapRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -23,49 +23,47 @@ import org.testng.annotations.Test;
  *
  * @author darren
  */
-public class FullMemberTest {
+public class WrapTest {
     
     public static ApplicationContext ctx;
     private Long id;
 
-    private static FullMemberRepository repo;
-    
-    public FullMemberTest() {
+    private static WrapRepository repo;
+    public WrapTest() {
     }
 
-    
-     @Test
-      public void createFullMember() {
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember p = new FullMember.Builder("Darren").surname("Thebus").build();
+      @Test
+      public void createWrap() {
+         repo = ctx.getBean(WrapRepository.class);
+         Wrap p = new Wrap.Builder("USN").price(125.55).build();
          repo.save(p);
          id = p.getId();
          Assert.assertNotNull(p);
       }
-     
-     @Test(dependsOnMethods = "createFullMember")
-     public void readFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
-         Assert.assertEquals(person.getName(), "Darren");
+      
+    @Test(dependsOnMethods = "createWrap")
+     public void readWrap(){
+         repo = ctx.getBean(WrapRepository.class);
+         Wrap entity = repo.findOne(id);
+         Assert.assertEquals(entity.getName(), "USN");
       }
      
-    @Test(dependsOnMethods = "readFullMember")
-     private void updateFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
-         FullMember updatedperson = new FullMember.Builder("Darren").person(person).surname("Lee").build();
-         repo.save(updatedperson);
-         FullMember updatePerson = repo.findOne(id);
-         Assert.assertEquals(updatePerson.getSurname(), "Lee");
+    @Test(dependsOnMethods = "readWrap")
+     private void updateWrap(){
+         repo = ctx.getBean(WrapRepository.class);
+         Wrap entity = repo.findOne(id);
+         Wrap updatedentity = new Wrap.Builder("USN").entity(entity).price(126.25).build();
+         repo.save(updatedentity);
+         Wrap updateEntity = repo.findOne(id);
+         Assert.assertEquals(updateEntity.getPrice(), 126.25);
      }
      
-     @Test(dependsOnMethods = "updateFullMember")
-     private void deleteFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
+     @Test(dependsOnMethods = "updateWrap")
+     private void deleteWrap(){
+         repo = ctx.getBean(WrapRepository.class);
+         Wrap person = repo.findOne(id);
          repo.delete(person);
-         FullMember deletedPerson = repo.findOne(id);
+         Wrap deletedPerson = repo.findOne(id);
          Assert.assertNull(deletedPerson);
          }
 

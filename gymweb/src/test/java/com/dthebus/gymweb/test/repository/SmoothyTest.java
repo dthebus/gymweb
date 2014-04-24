@@ -7,8 +7,8 @@
 package com.dthebus.gymweb.test.repository;
 
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
-import com.dthebus.gymweb.domain.FullMember;
-import com.dthebus.gymweb.repository.FullMemberRepository;
+import com.dthebus.gymweb.domain.Smoothy;
+import com.dthebus.gymweb.repository.SmoothyRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -23,49 +23,47 @@ import org.testng.annotations.Test;
  *
  * @author darren
  */
-public class FullMemberTest {
+public class SmoothyTest {
     
     public static ApplicationContext ctx;
     private Long id;
 
-    private static FullMemberRepository repo;
-    
-    public FullMemberTest() {
+    private static SmoothyRepository repo;
+    public SmoothyTest() {
     }
 
-    
-     @Test
-      public void createFullMember() {
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember p = new FullMember.Builder("Darren").surname("Thebus").build();
+      @Test
+      public void createSmoothy() {
+         repo = ctx.getBean(SmoothyRepository.class);
+         Smoothy p = new Smoothy.Builder("USN").price(125.55).build();
          repo.save(p);
          id = p.getId();
          Assert.assertNotNull(p);
       }
-     
-     @Test(dependsOnMethods = "createFullMember")
-     public void readFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
-         Assert.assertEquals(person.getName(), "Darren");
+      
+    @Test(dependsOnMethods = "createSmoothy")
+     public void readSmoothy(){
+         repo = ctx.getBean(SmoothyRepository.class);
+         Smoothy entity = repo.findOne(id);
+         Assert.assertEquals(entity.getName(), "USN");
       }
      
-    @Test(dependsOnMethods = "readFullMember")
-     private void updateFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
-         FullMember updatedperson = new FullMember.Builder("Darren").person(person).surname("Lee").build();
-         repo.save(updatedperson);
-         FullMember updatePerson = repo.findOne(id);
-         Assert.assertEquals(updatePerson.getSurname(), "Lee");
+    @Test(dependsOnMethods = "readSmoothy")
+     private void updateSmoothy(){
+         repo = ctx.getBean(SmoothyRepository.class);
+         Smoothy entity = repo.findOne(id);
+         Smoothy updatedentity = new Smoothy.Builder("USN").entity(entity).price(126.25).build();
+         repo.save(updatedentity);
+         Smoothy updateEntity = repo.findOne(id);
+         Assert.assertEquals(updateEntity.getPrice(), 126.25);
      }
      
-     @Test(dependsOnMethods = "updateFullMember")
-     private void deleteFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
+     @Test(dependsOnMethods = "updateSmoothy")
+     private void deleteSmoothy(){
+         repo = ctx.getBean(SmoothyRepository.class);
+         Smoothy person = repo.findOne(id);
          repo.delete(person);
-         FullMember deletedPerson = repo.findOne(id);
+         Smoothy deletedPerson = repo.findOne(id);
          Assert.assertNull(deletedPerson);
          }
 

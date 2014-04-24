@@ -7,8 +7,8 @@
 package com.dthebus.gymweb.test.repository;
 
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
-import com.dthebus.gymweb.domain.FullMember;
-import com.dthebus.gymweb.repository.FullMemberRepository;
+import com.dthebus.gymweb.domain.AccessController;
+import com.dthebus.gymweb.repository.AccessControllerRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -23,49 +23,46 @@ import org.testng.annotations.Test;
  *
  * @author darren
  */
-public class FullMemberTest {
-    
+public class AccessControllerTest {
     public static ApplicationContext ctx;
     private Long id;
 
-    private static FullMemberRepository repo;
-    
-    public FullMemberTest() {
+    private static AccessControllerRepository repo;
+    public AccessControllerTest() {
     }
 
-    
-     @Test
-      public void createFullMember() {
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember p = new FullMember.Builder("Darren").surname("Thebus").build();
+      @Test
+      public void createAccessController() {
+         repo = ctx.getBean(AccessControllerRepository.class);
+         AccessController p = new AccessController.Builder("Darren").surname("Thebus").build();
          repo.save(p);
          id = p.getId();
          Assert.assertNotNull(p);
       }
      
-     @Test(dependsOnMethods = "createFullMember")
-     public void readFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
+     @Test(dependsOnMethods = "createAccessController")
+     public void readAccessController(){
+         repo = ctx.getBean(AccessControllerRepository.class);
+         AccessController person = repo.findOne(id);
          Assert.assertEquals(person.getName(), "Darren");
       }
      
-    @Test(dependsOnMethods = "readFullMember")
-     private void updateFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
-         FullMember updatedperson = new FullMember.Builder("Darren").person(person).surname("Lee").build();
+    @Test(dependsOnMethods = "readAccessController")
+     private void updateAccessController(){
+         repo = ctx.getBean(AccessControllerRepository.class);
+         AccessController person = repo.findOne(id);
+         AccessController updatedperson = new AccessController.Builder("Darren").person(person).surname("Lee").build();
          repo.save(updatedperson);
-         FullMember updatePerson = repo.findOne(id);
+         AccessController updatePerson = repo.findOne(id);
          Assert.assertEquals(updatePerson.getSurname(), "Lee");
      }
      
-     @Test(dependsOnMethods = "updateFullMember")
-     private void deleteFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
+     @Test(dependsOnMethods = "updateAccessController")
+     private void deleteAccessController(){
+         repo = ctx.getBean(AccessControllerRepository.class);
+         AccessController person = repo.findOne(id);
          repo.delete(person);
-         FullMember deletedPerson = repo.findOne(id);
+         AccessController deletedPerson = repo.findOne(id);
          Assert.assertNull(deletedPerson);
          }
 

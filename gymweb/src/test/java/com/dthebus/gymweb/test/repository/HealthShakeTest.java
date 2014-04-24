@@ -7,8 +7,8 @@
 package com.dthebus.gymweb.test.repository;
 
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
-import com.dthebus.gymweb.domain.FullMember;
-import com.dthebus.gymweb.repository.FullMemberRepository;
+import com.dthebus.gymweb.domain.HealthShake;
+import com.dthebus.gymweb.repository.HealthShakeRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -23,49 +23,47 @@ import org.testng.annotations.Test;
  *
  * @author darren
  */
-public class FullMemberTest {
+public class HealthShakeTest {
     
     public static ApplicationContext ctx;
     private Long id;
 
-    private static FullMemberRepository repo;
-    
-    public FullMemberTest() {
+    private static HealthShakeRepository repo;
+    public HealthShakeTest() {
     }
 
-    
-     @Test
-      public void createFullMember() {
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember p = new FullMember.Builder("Darren").surname("Thebus").build();
+      @Test
+      public void createHealthShake() {
+         repo = ctx.getBean(HealthShakeRepository.class);
+         HealthShake p = new HealthShake.Builder("USN").price(125.55).build();
          repo.save(p);
          id = p.getId();
          Assert.assertNotNull(p);
       }
-     
-     @Test(dependsOnMethods = "createFullMember")
-     public void readFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
-         Assert.assertEquals(person.getName(), "Darren");
+      
+    @Test(dependsOnMethods = "createHealthShake")
+     public void readHealthShake(){
+         repo = ctx.getBean(HealthShakeRepository.class);
+         HealthShake entity = repo.findOne(id);
+         Assert.assertEquals(entity.getName(), "USN");
       }
      
-    @Test(dependsOnMethods = "readFullMember")
-     private void updateFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
-         FullMember updatedperson = new FullMember.Builder("Darren").person(person).surname("Lee").build();
-         repo.save(updatedperson);
-         FullMember updatePerson = repo.findOne(id);
-         Assert.assertEquals(updatePerson.getSurname(), "Lee");
+    @Test(dependsOnMethods = "readHealthShake")
+     private void updateHealthShake(){
+         repo = ctx.getBean(HealthShakeRepository.class);
+         HealthShake entity = repo.findOne(id);
+         HealthShake updatedentity = new HealthShake.Builder("USN").entity(entity).price(126.25).build();
+         repo.save(updatedentity);
+         HealthShake updateEntity = repo.findOne(id);
+         Assert.assertEquals(updateEntity.getPrice(), 126.25);
      }
      
-     @Test(dependsOnMethods = "updateFullMember")
-     private void deleteFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
+     @Test(dependsOnMethods = "updateHealthShake")
+     private void deleteHealthShake(){
+         repo = ctx.getBean(HealthShakeRepository.class);
+         HealthShake person = repo.findOne(id);
          repo.delete(person);
-         FullMember deletedPerson = repo.findOne(id);
+         HealthShake deletedPerson = repo.findOne(id);
          Assert.assertNull(deletedPerson);
          }
 

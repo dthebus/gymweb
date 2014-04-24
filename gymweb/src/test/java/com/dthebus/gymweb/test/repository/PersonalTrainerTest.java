@@ -7,8 +7,8 @@
 package com.dthebus.gymweb.test.repository;
 
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
-import com.dthebus.gymweb.domain.FullMember;
-import com.dthebus.gymweb.repository.FullMemberRepository;
+import com.dthebus.gymweb.domain.PersonalTrainer;
+import com.dthebus.gymweb.repository.PersonalTrainerRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -23,49 +23,46 @@ import org.testng.annotations.Test;
  *
  * @author darren
  */
-public class FullMemberTest {
-    
-    public static ApplicationContext ctx;
+public class PersonalTrainerTest {
+     public static ApplicationContext ctx;
     private Long id;
 
-    private static FullMemberRepository repo;
-    
-    public FullMemberTest() {
+    private static PersonalTrainerRepository repo;
+    public PersonalTrainerTest() {
     }
 
-    
      @Test
-      public void createFullMember() {
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember p = new FullMember.Builder("Darren").surname("Thebus").build();
+      public void createPersonalTrainer() {
+         repo = ctx.getBean(PersonalTrainerRepository.class);
+         PersonalTrainer p = new PersonalTrainer.Builder("Darren").surname("Thebus").build();
          repo.save(p);
          id = p.getId();
          Assert.assertNotNull(p);
       }
      
-     @Test(dependsOnMethods = "createFullMember")
-     public void readFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
+     @Test(dependsOnMethods = "createPersonalTrainer")
+     public void readPersonalTrainer(){
+         repo = ctx.getBean(PersonalTrainerRepository.class);
+         PersonalTrainer person = repo.findOne(id);
          Assert.assertEquals(person.getName(), "Darren");
       }
      
-    @Test(dependsOnMethods = "readFullMember")
-     private void updateFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
-         FullMember updatedperson = new FullMember.Builder("Darren").person(person).surname("Lee").build();
+    @Test(dependsOnMethods = "readPersonalTrainer")
+     private void updatePersonalTrainer(){
+         repo = ctx.getBean(PersonalTrainerRepository.class);
+         PersonalTrainer person = repo.findOne(id);
+         PersonalTrainer updatedperson = new PersonalTrainer.Builder("Darren").person(person).surname("Lee").build();
          repo.save(updatedperson);
-         FullMember updatePerson = repo.findOne(id);
+         PersonalTrainer updatePerson = repo.findOne(id);
          Assert.assertEquals(updatePerson.getSurname(), "Lee");
      }
      
-     @Test(dependsOnMethods = "updateFullMember")
-     private void deleteFullMember(){
-         repo = ctx.getBean(FullMemberRepository.class);
-         FullMember person = repo.findOne(id);
+     @Test(dependsOnMethods = "updatePersonalTrainer")
+     private void deletePersonalTrainer(){
+         repo = ctx.getBean(PersonalTrainerRepository.class);
+         PersonalTrainer person = repo.findOne(id);
          repo.delete(person);
-         FullMember deletedPerson = repo.findOne(id);
+         PersonalTrainer deletedPerson = repo.findOne(id);
          Assert.assertNull(deletedPerson);
          }
 

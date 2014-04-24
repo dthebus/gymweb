@@ -6,7 +6,7 @@
 
 package com.dthebus.gymweb.repository;
 
-import com.dthebus.gymweb.domain.FullMember;
+import com.dthebus.gymweb.domain.EnergyDrink;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
  * @author darren
  */
 @Repository
-public interface FullMemberRepository extends JpaRepository<FullMember, Long>{
+public interface EnergyDrinkRepository extends JpaRepository<EnergyDrink, Long>{
     
 }
