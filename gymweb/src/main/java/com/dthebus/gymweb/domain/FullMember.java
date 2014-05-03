@@ -25,11 +25,12 @@ public class FullMember implements Serializable {
     private Long id;
     private String name;
     private String surname;
-     
+    private int age;
      private FullMember(Builder builder) {
         id= builder.id;
         name = builder.name;
         surname = builder.surname;
+        age = builder.age;
        }
      private FullMember(){}
      
@@ -38,6 +39,7 @@ public class FullMember implements Serializable {
         private Long id;
         private String name;
         private String surname;
+         private int age;
         public Builder(String value) {
             this.name = value;
            
@@ -48,6 +50,7 @@ public class FullMember implements Serializable {
             id = person.getId();
             name = person.getName();
             surname = person.getSurname();
+            age = person.getAge();
             return this;
             
         }
@@ -70,7 +73,9 @@ public class FullMember implements Serializable {
     public String getSurname(){
     return surname;
     }
-   
+   public int getAge(){
+   return age;
+   }
 
     @Override
     public int hashCode() {
