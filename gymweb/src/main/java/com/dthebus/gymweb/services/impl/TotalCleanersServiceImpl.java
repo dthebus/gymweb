@@ -6,7 +6,7 @@
 
 package com.dthebus.gymweb.services.impl;
 
-import com.dthebus.gymweb.domain.Cleaner;
+import com.dthebus.gymweb.domain.employees.Cleaner;
 import com.dthebus.gymweb.repository.CleanerRepository;
 import com.dthebus.gymweb.services.TotalCleanersService;
 import java.util.List;

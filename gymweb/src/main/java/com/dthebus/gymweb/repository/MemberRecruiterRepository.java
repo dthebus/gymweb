@@ -6,7 +6,7 @@
 
 package com.dthebus.gymweb.repository;
 
-import com.dthebus.gymweb.domain.MemberRecruiter;
+import com.dthebus.gymweb.domain.employees.MemberRecruiter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

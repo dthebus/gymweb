@@ -7,7 +7,7 @@
 package com.dthebus.gymweb.test.services;
 
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
-import com.dthebus.gymweb.domain.FullMember;
+import com.dthebus.gymweb.domain.members.FullMember;
 import com.dthebus.gymweb.services.TotalFullMembersService;
 import java.util.List;
 import org.springframework.context.ApplicationContext;

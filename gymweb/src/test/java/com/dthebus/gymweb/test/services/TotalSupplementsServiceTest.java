@@ -7,7 +7,7 @@
 package com.dthebus.gymweb.test.services;
 
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
-import com.dthebus.gymweb.domain.Supplement;
+import com.dthebus.gymweb.domain.shop.Supplement;
 import com.dthebus.gymweb.services.TotalSupplementsService;
 import java.util.List;
 import org.springframework.context.ApplicationContext;

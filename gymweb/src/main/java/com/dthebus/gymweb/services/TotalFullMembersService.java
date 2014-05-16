@@ -6,7 +6,7 @@
 
 package com.dthebus.gymweb.services;
 
-import com.dthebus.gymweb.domain.FullMember;
+import com.dthebus.gymweb.domain.members.FullMember;
 import java.util.List;
 
 /**

@@ -6,7 +6,7 @@
 
 package com.dthebus.gymweb.services.impl;
 
-import com.dthebus.gymweb.domain.Manager;
+import com.dthebus.gymweb.domain.employees.Manager;
 import com.dthebus.gymweb.repository.ManagerRepository;
 import com.dthebus.gymweb.services.TotalManagersService;
 import java.util.List;

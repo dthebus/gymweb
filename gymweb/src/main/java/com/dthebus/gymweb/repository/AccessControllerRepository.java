@@ -6,7 +6,7 @@
 
 package com.dthebus.gymweb.repository;
 
-import com.dthebus.gymweb.domain.AccessController;
+import com.dthebus.gymweb.domain.employees.AccessController;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

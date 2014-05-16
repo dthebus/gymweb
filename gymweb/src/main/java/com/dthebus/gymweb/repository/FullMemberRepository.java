@@ -6,7 +6,7 @@
 
 package com.dthebus.gymweb.repository;
 
-import com.dthebus.gymweb.domain.FullMember;
+import com.dthebus.gymweb.domain.members.FullMember;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

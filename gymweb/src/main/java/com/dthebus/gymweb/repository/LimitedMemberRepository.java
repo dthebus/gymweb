@@ -6,7 +6,7 @@
 
 package com.dthebus.gymweb.repository;
 
-import com.dthebus.gymweb.domain.LimitedMember;
+import com.dthebus.gymweb.domain.members.LimitedMember;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

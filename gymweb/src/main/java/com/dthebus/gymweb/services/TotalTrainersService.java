@@ -6,7 +6,7 @@
 
 package com.dthebus.gymweb.services;
 
-import com.dthebus.gymweb.domain.Trainer;
+import com.dthebus.gymweb.domain.employees.Trainer;
 import java.util.List;
 
 /**

@@ -6,7 +6,7 @@
 
 package com.dthebus.gymweb.services.impl;
 
-import com.dthebus.gymweb.domain.MemberRecruiter;
+import com.dthebus.gymweb.domain.employees.MemberRecruiter;
 import com.dthebus.gymweb.repository.MemberRecruiterRepository;
 import com.dthebus.gymweb.services.TotalMemberRecruitersService;
 import java.util.List;

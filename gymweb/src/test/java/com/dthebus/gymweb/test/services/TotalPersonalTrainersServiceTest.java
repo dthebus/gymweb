@@ -7,7 +7,7 @@
 package com.dthebus.gymweb.test.services;
 
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
-import com.dthebus.gymweb.domain.PersonalTrainer;
+import com.dthebus.gymweb.domain.employees.PersonalTrainer;
 import com.dthebus.gymweb.services.TotalPersonalTrainersService;
 import static com.dthebus.gymweb.test.services.TotalClassInstructorsServiceTest.ctx;
 import java.util.List;

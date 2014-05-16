@@ -7,7 +7,7 @@
 package com.dthebus.gymweb.test.repository;
 
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
-import com.dthebus.gymweb.domain.MemberRecruiter;
+import com.dthebus.gymweb.domain.employees.MemberRecruiter;
 import com.dthebus.gymweb.repository.MemberRecruiterRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

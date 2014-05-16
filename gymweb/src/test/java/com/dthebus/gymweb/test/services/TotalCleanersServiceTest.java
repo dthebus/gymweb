@@ -7,7 +7,7 @@
 package com.dthebus.gymweb.test.services;
 
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
-import com.dthebus.gymweb.domain.Cleaner;
+import com.dthebus.gymweb.domain.employees.Cleaner;
 import com.dthebus.gymweb.services.TotalCleanersService;
 import java.util.List;
 import org.springframework.context.ApplicationContext;

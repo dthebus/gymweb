@@ -6,7 +6,7 @@
 
 package com.dthebus.gymweb.services.impl;
 
-import com.dthebus.gymweb.domain.AccessController;
+import com.dthebus.gymweb.domain.employees.AccessController;
 import com.dthebus.gymweb.repository.AccessControllerRepository;
 import com.dthebus.gymweb.services.TotalAccessControllersService;
 import java.util.List;

@@ -6,7 +6,7 @@
 
 package com.dthebus.gymweb.services.impl;
 
-import com.dthebus.gymweb.domain.PersonalTrainer;
+import com.dthebus.gymweb.domain.employees.PersonalTrainer;
 import com.dthebus.gymweb.repository.PersonalTrainerRepository;
 import com.dthebus.gymweb.services.TotalPersonalTrainersService;
 import java.util.List;

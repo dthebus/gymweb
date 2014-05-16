@@ -6,7 +6,7 @@
 
 package com.dthebus.gymweb.services.impl;
 
-import com.dthebus.gymweb.domain.FullMember;
+import com.dthebus.gymweb.domain.members.FullMember;
 import com.dthebus.gymweb.repository.FullMemberRepository;
 import com.dthebus.gymweb.services.TotalFullMembersService;
 import java.util.List;
