@@ -42,8 +42,8 @@ public class mediatorTest {
          
          float swedishBidInKronor = 55.0f;
          float frenchBidInEuro = 70.0f;
-//            assertTrue(swedish.attemptToPurchase(swedishBidInKronor));
-             assertTrue(french.attemptToPurchase(frenchBidInEuro));
+          // assertTrue(swedish.attemptToPurchase(swedishBidInKronor));
+           //  assertTrue(french.attemptToPurchase(frenchBidInEuro));
              }
 
     @BeforeClass

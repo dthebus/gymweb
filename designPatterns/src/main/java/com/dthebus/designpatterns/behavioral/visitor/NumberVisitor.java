@@ -6,21 +6,14 @@
 
 package com.dthebus.designpatterns.behavioral.visitor;
 
+import java.util.List;
+
 /**
  *
  * @author darren
  */
-public class TwoElement implements NumberElement{
-    int a;
-    int b;
-    
-    public TwoElement(int a, int b){
-        this.a = a;
-        this.b= b;
-    }
-
-    @Override
-    public void accept(NumberVisitor visitor) {
-      visitor.visit(this);
-    }
+public interface NumberVisitor {
+    public void visit(TwoElement twoElement);
+    public void visit(ThreeElement threeElement);
+    public void visit(List<NumberElement> elementList);
 }

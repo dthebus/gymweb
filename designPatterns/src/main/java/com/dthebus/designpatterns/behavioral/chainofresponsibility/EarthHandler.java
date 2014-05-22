@@ -16,8 +16,6 @@ public class EarthHandler extends PlanetHandler{
             return "earth";
         }
         else
-            if(successor!=null)
-                successor.handleRequest(request);
-        return null;
+            return successor.handleRequest(request);
     }
 }

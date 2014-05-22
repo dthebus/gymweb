@@ -16,9 +16,9 @@ public class VenusHandler extends PlanetHandler{
             return "venus"; 
         }
         else
-            if(successor!=null)
-                successor.handleRequest(request);
-        return null;
+            return successor.handleRequest(request);
+       
+       
     }
     
 }

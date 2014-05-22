@@ -21,7 +21,7 @@ public class ThreeElement implements NumberElement{
     }
 
     @Override
-    public void accept(Numbervisitor visitor) {
+    public void accept(NumberVisitor visitor) {
       visitor.visit(this);
     }
 }

@@ -32,8 +32,8 @@ public class chainOfResponsibilityTest {
      public void hello() {
          PlanetHandler chain = setUpChain();
          assertEquals(chain.handleRequest(PlanetEnum.VENUS), "venus");
-         //chain.handleRequest(PlanetEnum.MERCURY);
-        // chain.handleRequest(PlanetEnum.EARTH);
+         assertEquals(chain.handleRequest(PlanetEnum.MERCURY),"mercury");
+         assertEquals(chain.handleRequest(PlanetEnum.EARTH),"earth");
          
          
          

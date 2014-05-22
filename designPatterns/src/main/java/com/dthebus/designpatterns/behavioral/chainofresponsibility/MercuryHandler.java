@@ -16,8 +16,6 @@ public class MercuryHandler extends PlanetHandler{
             return "mercury";
         }
         else
-            if(successor!=null)
-                successor.handleRequest(request);
-        return null;
+            return successor.handleRequest(request);
     }
 }

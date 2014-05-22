@@ -11,5 +11,5 @@ package com.dthebus.designpatterns.behavioral.visitor;
  * @author darren
  */
 public interface NumberElement {
-    public void accept(Numbervisitor visitor);
+    public void accept(NumberVisitor visitor);
 }

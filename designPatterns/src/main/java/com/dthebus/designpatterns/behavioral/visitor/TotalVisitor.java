@@ -12,22 +12,29 @@ import java.util.List;
  *
  * @author darren
  */
-public class SumVisitor implements NumberVisitor{
-
+public class TotalVisitor implements NumberVisitor{
+    
+    int totalSum = 0;
     @Override
     public void visit(TwoElement twoElement) {
-    
+      
     }
 
     @Override
     public void visit(ThreeElement threeElement) {
-    
+      
     }
 
     @Override
     public void visit(List<NumberElement> elementList) {
-   for(NumberElement ne : elementList)
-       ne.accept(this);
+     for(NumberElement ne : elementList){
+         ne.accept(this);
+     }
     }
+     public int getTotalSum()
+     {
+         return totalSum;
+     }
+    
     
 }
