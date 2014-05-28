@@ -42,7 +42,7 @@ public class FullMemberControllerRestTest {
            exchange(URL+"api/fullmember/create", HttpMethod.POST, requestEntity, String.class);
            Assert.assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
    }
-   @Test
+  // @Test
    public void testgetAllFullMembers(){
        HttpEntity<?> requestEntity = getHttpEntity();
        ResponseEntity<FullMember[]> responseEntity = restTemplate.exchange(URL + "api/fullmember/allfullmembers", HttpMethod.GET, requestEntity, FullMember[].class);
