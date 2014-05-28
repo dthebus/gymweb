@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface TotalAccessControllersService {
     public List<AccessController> getTotal();
+     public double getSalary(int id);
 }

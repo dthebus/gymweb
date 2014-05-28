@@ -20,10 +20,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class TotalAccessControllersServiceImpl implements TotalAccessControllersService{
 @Autowired
-    private AccessControllerRepository fullMemberRepository;
+    private AccessControllerRepository acr;
     
     @Override
     public List<AccessController> getTotal() {
-    return fullMemberRepository.findAll();    
+    return acr.findAll();    
     }
+
+    @Override
+    public double getSalary(int id) {
+      List<AccessController> all = acr.findAll();
+      for(AccessController a : all)
+          if(a.getId()==id)
+              return a.getSalary();
+      return 0;}
 }

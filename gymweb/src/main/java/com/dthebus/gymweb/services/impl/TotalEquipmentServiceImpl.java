@@ -20,10 +20,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class TotalEquipmentServiceImpl implements TotalEquipmentService{
 @Autowired
-    private EquipmentRepository fullMemberRepository;
+    private EquipmentRepository er;
     
     @Override
     public List<Equipment> getTotal() {
-    return fullMemberRepository.findAll();    
+    return er.findAll();    
+    }
+     public Equipment persist(Equipment entity) {
+     return er.save(entity);
     }
 }

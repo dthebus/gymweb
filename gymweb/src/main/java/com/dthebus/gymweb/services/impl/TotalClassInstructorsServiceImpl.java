@@ -20,10 +20,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class TotalClassInstructorsServiceImpl implements TotalClassInstructorsService{
 @Autowired
-    private ClassInstructorRepository fullMemberRepository;
+    private ClassInstructorRepository cir;
     
     @Override
     public List<ClassInstructor> getTotal() {
-    return fullMemberRepository.findAll();    
+    return cir.findAll();    
     }
+
+    @Override
+    public double getSalary(int id) {
+      List<ClassInstructor> all = cir.findAll();
+      for(ClassInstructor a : all)
+          if(a.getId()==id)
+              return a.getSalary();
+      return 0;}
 }

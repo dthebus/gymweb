@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface TotalManagersService {
     public List<Manager> getTotal();
+     public double getSalary(int id);
 }

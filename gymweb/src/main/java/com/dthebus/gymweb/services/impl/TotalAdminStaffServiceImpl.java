@@ -20,10 +20,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class TotalAdminStaffServiceImpl implements TotalAdminStaffService{
 @Autowired
-    private AdminStaffRepository fullMemberRepository;
+    private AdminStaffRepository asr;
     
     @Override
     public List<AdminStaff> getTotal() {
-    return fullMemberRepository.findAll();    
+    return asr.findAll();    
     }
+
+    @Override
+    public double getSalary(int id) {
+        List<AdminStaff> all = asr.findAll();
+      for(AdminStaff a : all)
+          if(a.getId()==id)
+              return a.getSalary();
+      return 0;}
 }

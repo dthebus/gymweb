@@ -26,4 +26,31 @@ public class TotalSupplierServiceImpl implements TotaSupplierService{
     public List<Supplier> getTotal() {
     return fullMemberRepository.findAll();    
     }
+
+    @Override
+    public Supplier find(Long id) {
+        return fullMemberRepository.findOne(id);
+    }
+
+    @Override
+    public Supplier persist(Supplier entity) {
+     return fullMemberRepository.save(entity);
+    }
+
+    @Override
+    public Supplier merge(Supplier entity) {
+     if(entity.getId()!=null)
+         return fullMemberRepository.save(entity);
+     return null;
+    }
+
+    @Override
+    public void remove(Supplier entity) {
+     fullMemberRepository.delete(entity);
+    }
+
+    @Override
+    public List<Supplier> findAll() {
+     return fullMemberRepository.findAll();
+    }
 }

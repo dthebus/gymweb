@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface TotalEquipmentService {
     public List<Equipment> getTotal();
+     public Equipment persist(Equipment entity);
 }

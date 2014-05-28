@@ -9,6 +9,7 @@ package com.dthebus.gymweb.test.repository;
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
 import com.dthebus.gymweb.domain.shop.Drink;
 import com.dthebus.gymweb.repository.DrinkRepository;
+import com.dthebus.gymweb.test.ConnectionConfigTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -69,7 +70,7 @@ public class DrinkTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
     }
     @AfterClass
     public static void tearDownClass() throws Exception {

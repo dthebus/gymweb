@@ -26,4 +26,13 @@ public class TotalTrainersServiceImpl implements TotalTrainersService{
     public List<Trainer> getTotal() {
     return fullMemberRepository.findAll();    
     }
+
+    @Override
+    public double getSalary(int id) {
+      List<Trainer> all = fullMemberRepository.findAll();
+      for(Trainer a : all)
+          if(a.getId()==id)
+              return a.getSalary();
+      return 0;
+    }
 }

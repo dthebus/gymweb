@@ -23,12 +23,12 @@ public class Department implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 private String name;
-    private double price;
+    private int managerID;
      
      private Department(Builder builder) {
         id= builder.id;
         name = builder.name;
-        price = builder.price;
+        managerID = builder.managerID;
        }
      private Department(){}
      
@@ -36,7 +36,7 @@ private String name;
 
         private Long id;
         private String name;
-        private double price;
+        private int managerID;
         public Builder(String value) {
             this.name = value;
            
@@ -46,12 +46,12 @@ private String name;
         public Builder entity(Department entity){
             id = entity.getId();
             name = entity.getName();
-            price = entity.getPrice();
+            managerID = entity.getManagerID();
             return this;
             
         }
-        public Builder price(double value) {
-            price = value;
+        public Builder managerID(int value) {
+            managerID = value;
             return this;
         }
         public Department build(){
@@ -66,8 +66,8 @@ private String name;
     public Long getId() {
         return id;
     }
-    public double getPrice(){
-    return price;
+    public int getManagerID(){
+    return managerID;
     }
    
 

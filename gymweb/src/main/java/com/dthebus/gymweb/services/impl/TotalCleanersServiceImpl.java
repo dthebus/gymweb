@@ -20,10 +20,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class TotalCleanersServiceImpl implements TotalCleanersService{
 @Autowired
-    private CleanerRepository fullMemberRepository;
+    private CleanerRepository cr;
     
     @Override
     public List<Cleaner> getTotal() {
-    return fullMemberRepository.findAll();    
+    return cr.findAll();    
     }
+
+    @Override
+    public double getSalary(int id) {
+     List<Cleaner> all = cr.findAll();
+      for(Cleaner a : all)
+          if(a.getId()==id)
+              return a.getSalary();
+      return 0; }
 }

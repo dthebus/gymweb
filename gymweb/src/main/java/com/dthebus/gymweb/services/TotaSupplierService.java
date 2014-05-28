@@ -13,6 +13,6 @@ import java.util.List;
  *
  * @author darren
  */
-public interface TotaSupplierService {
+public interface TotaSupplierService extends Services<Supplier, Long>{
     public List<Supplier> getTotal();
 }

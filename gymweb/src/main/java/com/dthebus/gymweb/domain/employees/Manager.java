@@ -24,11 +24,12 @@ public class Manager implements Serializable {
     private Long id;
 private String name;
     private String surname;
-     
+      private double salary;
      private Manager(Builder builder) {
         id= builder.id;
         name = builder.name;
         surname = builder.surname;
+        salary= builder.salary;
        }
      private Manager(){}
      
@@ -37,6 +38,7 @@ private String name;
         private Long id;
         private String name;
         private String surname;
+         private double salary;
         public Builder(String value) {
             this.name = value;
            
@@ -47,6 +49,7 @@ private String name;
             id = person.getId();
             name = person.getName();
             surname = person.getSurname();
+            salary= person.getSalary();
             return this;
             
         }
@@ -54,12 +57,18 @@ private String name;
             surname = value;
             return this;
         }
+        public Builder salary(double  sal){
+            salary= sal;
+            return this;
+        }
         public Manager build(){
             return new Manager(this);
         }
 
     }
-
+     public double getSalary(){
+     return salary;
+     }
     public String getName() {
         return name;
     }

@@ -9,6 +9,7 @@ package com.dthebus.gymweb.test.services;
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
 import com.dthebus.gymweb.domain.department.Department;
 import com.dthebus.gymweb.services.TotalDepartmentService;
+import com.dthebus.gymweb.test.ConnectionConfigTest;
 import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -44,7 +45,7 @@ public class TotalDepartmentServiceTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-         ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+         ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
     }
 
     @AfterClass

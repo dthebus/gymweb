@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface TotalCleanersService {
     public List<Cleaner> getTotal();
+     public double getSalary(int id);
 }

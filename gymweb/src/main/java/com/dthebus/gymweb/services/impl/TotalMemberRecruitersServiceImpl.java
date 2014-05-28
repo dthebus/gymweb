@@ -20,10 +20,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class TotalMemberRecruitersServiceImpl implements TotalMemberRecruitersService{
 @Autowired
-    private MemberRecruiterRepository fullMemberRepository;
+    private MemberRecruiterRepository mrr;
     
     @Override
     public List<MemberRecruiter> getTotal() {
-    return fullMemberRepository.findAll();    
+    return mrr.findAll();    
     }
-}
+
+    @Override
+    public double getSalary(int id) {
+        List<MemberRecruiter> all = mrr.findAll();
+      for(MemberRecruiter a : all)
+          if(a.getId()==id)
+              return a.getSalary();
+      return 0;}
+    }
+

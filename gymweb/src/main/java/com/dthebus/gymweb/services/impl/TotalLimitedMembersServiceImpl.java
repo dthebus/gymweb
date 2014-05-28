@@ -33,7 +33,7 @@ public class TotalLimitedMembersServiceImpl implements TotalLimitedMembersServic
    List<LimitedMember> allmembers = limitedMemberRepository.findAll();
         List<LimitedMember> membersunderageof = new ArrayList();
         for(LimitedMember mem : allmembers){
-            if(age == mem.getAge())
+            if(age > mem.getAge())
                 membersunderageof.add(mem);
         }
         return membersunderageof;

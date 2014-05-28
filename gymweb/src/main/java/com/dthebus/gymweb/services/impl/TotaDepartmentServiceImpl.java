@@ -20,10 +20,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class TotaDepartmentServiceImpl implements TotalDepartmentService{
 @Autowired
-    private DepartmentRepository fullMemberRepository;
+    private DepartmentRepository dr;
     
     @Override
     public List<Department> getTotal() {
-    return fullMemberRepository.findAll();    
+    return dr.findAll();    
+    }
+    public Department persist(Department entity) {
+     return dr.save(entity);
     }
 }

@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface TotalDepartmentService {
     public List<Department> getTotal();
+    public Department persist(Department entity);
 }

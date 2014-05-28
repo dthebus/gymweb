@@ -20,10 +20,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class TotalManagersServiceImpl implements TotalManagersService{
 @Autowired
-    private ManagerRepository fullMemberRepository;
+    private ManagerRepository mr;
     
     @Override
     public List<Manager> getTotal() {
-    return fullMemberRepository.findAll();    
+    return mr.findAll();    
     }
+
+    @Override
+    public double getSalary(int id) {
+       List<Manager> all = mr.findAll();
+      for(Manager a : all)
+          if(a.getId()==id)
+              return a.getSalary();
+      return 0;}
 }

@@ -9,6 +9,7 @@ package com.dthebus.gymweb.test.services;
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
 import com.dthebus.gymweb.domain.employees.PersonalTrainer;
 import com.dthebus.gymweb.services.TotalPersonalTrainersService;
+import com.dthebus.gymweb.test.ConnectionConfigTest;
 import static com.dthebus.gymweb.test.services.TotalClassInstructorsServiceTest.ctx;
 import java.util.List;
 import org.springframework.context.ApplicationContext;
@@ -44,7 +45,7 @@ public class TotalPersonalTrainersServiceTest {
      }
 @BeforeClass
     public static void setUpClass() throws Exception {
-         ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+         ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
     }
 
 

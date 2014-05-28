@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface TotalTrainersService {
     public List<Trainer> getTotal();
+    public double getSalary(int id);
 }

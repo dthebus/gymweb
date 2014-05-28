@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface TotalMemberRecruitersService {
     public List<MemberRecruiter> getTotal();
+     public double getSalary(int id);
 }

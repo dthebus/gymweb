@@ -9,6 +9,7 @@ package com.dthebus.gymweb.test.repository;
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
 import com.dthebus.gymweb.domain.department.Department;
 import com.dthebus.gymweb.repository.DepartmentRepository;
+import com.dthebus.gymweb.test.ConnectionConfigTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -35,7 +36,7 @@ public class DepartmentTest {
       @Test
       public void createSandwich() {
          repo = ctx.getBean(DepartmentRepository.class);
-         Department p = new Department.Builder("USN").price(125.55).build();
+         Department p = new Department.Builder("Weights").managerID(1).build();
          repo.save(p);
          id = p.getId();
          Assert.assertNotNull(p);
@@ -45,17 +46,17 @@ public class DepartmentTest {
      public void readSandwich(){
          repo = ctx.getBean(DepartmentRepository.class);
          Department entity = repo.findOne(id);
-         Assert.assertEquals(entity.getName(), "USN");
+         Assert.assertEquals(entity.getName(), "Weights");
       }
      
     @Test(dependsOnMethods = "readSandwich")
      private void updateSandwich(){
          repo = ctx.getBean(DepartmentRepository.class);
          Department entity = repo.findOne(id);
-         Department updatedentity = new Department.Builder("USN").entity(entity).price(126.25).build();
+         Department updatedentity = new Department.Builder("Weights").entity(entity).managerID(2).build();
          repo.save(updatedentity);
          Department updateEntity = repo.findOne(id);
-         Assert.assertEquals(updateEntity.getPrice(), 126.25);
+         Assert.assertEquals(updateEntity.getManagerID(), 2);
      }
      
      @Test(dependsOnMethods = "updateSandwich")
@@ -69,7 +70,7 @@ public class DepartmentTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
     }
     @AfterClass
     public static void tearDownClass() throws Exception {

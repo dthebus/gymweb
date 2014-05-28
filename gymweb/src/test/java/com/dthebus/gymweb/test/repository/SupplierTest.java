@@ -9,6 +9,7 @@ package com.dthebus.gymweb.test.repository;
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
 import com.dthebus.gymweb.domain.department.Supplier;
 import com.dthebus.gymweb.repository.SupplierRepository;
+import com.dthebus.gymweb.test.ConnectionConfigTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -35,7 +36,7 @@ public class SupplierTest {
       @Test
       public void createSupplier() {
          repo = ctx.getBean(SupplierRepository.class);
-         Supplier p = new Supplier.Builder("USN").price(125.55).build();
+         Supplier p = new Supplier.Builder("USN").products("Weigh Protein").build();
          repo.save(p);
          id = p.getId();
          Assert.assertNotNull(p);
@@ -52,10 +53,10 @@ public class SupplierTest {
      private void updateSupplier(){
          repo = ctx.getBean(SupplierRepository.class);
          Supplier entity = repo.findOne(id);
-         Supplier updatedentity = new Supplier.Builder("USN").entity(entity).price(126.25).build();
+         Supplier updatedentity = new Supplier.Builder("USN").entity(entity).products("Creatine").build();
          repo.save(updatedentity);
          Supplier updateEntity = repo.findOne(id);
-         Assert.assertEquals(updateEntity.getPrice(), 126.25);
+         Assert.assertEquals(updateEntity.getProducts(), "Creatine");
      }
      
      @Test(dependsOnMethods = "updateSupplier")
@@ -69,7 +70,7 @@ public class SupplierTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
     }
 
     @AfterClass

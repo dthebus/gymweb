@@ -23,12 +23,12 @@ public class Supplier implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 private String name;
-    private double price;
+    private String products;
      
      private Supplier(Builder builder) {
         id= builder.id;
         name = builder.name;
-        price = builder.price;
+        products = builder.products;
        }
      private Supplier(){}
      
@@ -36,7 +36,7 @@ private String name;
 
         private Long id;
         private String name;
-        private double price;
+        private String products;
         public Builder(String value) {
             this.name = value;
            
@@ -46,12 +46,12 @@ private String name;
         public Builder entity(Supplier entity){
             id = entity.getId();
             name = entity.getName();
-            price = entity.getPrice();
+            products = entity.getProducts();
             return this;
             
         }
-        public Builder price(double value) {
-            price = value;
+        public Builder products(String value) {
+            products = value;
             return this;
         }
         public Supplier build(){
@@ -66,8 +66,8 @@ private String name;
     public Long getId() {
         return id;
     }
-    public double getPrice(){
-    return price;
+    public String getProducts(){
+    return products;
     }
    
 

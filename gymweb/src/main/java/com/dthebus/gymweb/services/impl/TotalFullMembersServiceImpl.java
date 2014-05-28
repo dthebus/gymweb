@@ -61,7 +61,7 @@ public class TotalFullMembersServiceImpl implements TotalFullMembersService{
         List<FullMember> allmembers = fullMemberRepository.findAll();
         List<FullMember> membersunderageof = new ArrayList();
         for(FullMember mem : allmembers){
-            if(age == mem.getAge())
+            if(age > mem.getAge())
                 membersunderageof.add(mem);
         }
         return membersunderageof;
