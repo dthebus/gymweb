@@ -13,6 +13,7 @@ import java.util.List;
  *
  * @author darren
  */
-public interface TotalFullMembersService {
+public interface TotalFullMembersService extends Services<FullMember, Long>{
     public List<FullMember> getTotalPeople();
+    public List<FullMember> getTotalmembersUnderageof(int age);
 }

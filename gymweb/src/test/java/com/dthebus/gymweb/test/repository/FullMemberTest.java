@@ -9,6 +9,7 @@ package com.dthebus.gymweb.test.repository;
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
 import com.dthebus.gymweb.domain.members.FullMember;
 import com.dthebus.gymweb.repository.FullMemberRepository;
+import com.dthebus.gymweb.test.ConnectionConfigTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -37,7 +38,7 @@ public class FullMemberTest {
      @Test
       public void createFullMember() {
          repo = ctx.getBean(FullMemberRepository.class);
-         FullMember p = new FullMember.Builder("Darren").surname("Thebus").build();
+         FullMember p = new FullMember.Builder("Darryn").surname("Thebus").build();
          repo.save(p);
          id = p.getId();
          Assert.assertNotNull(p);
@@ -47,7 +48,7 @@ public class FullMemberTest {
      public void readFullMember(){
          repo = ctx.getBean(FullMemberRepository.class);
          FullMember person = repo.findOne(id);
-         Assert.assertEquals(person.getName(), "Darren");
+         Assert.assertEquals(person.getName(), "Darryn");
       }
      
     @Test(dependsOnMethods = "readFullMember")
@@ -71,7 +72,7 @@ public class FullMemberTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
     }
 
     @AfterClass

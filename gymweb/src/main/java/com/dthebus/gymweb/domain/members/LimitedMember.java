@@ -24,11 +24,12 @@ public class LimitedMember implements Serializable {
     private Long id;
  private String name;
     private String surname;
-     
+    private int age; 
      private LimitedMember(Builder builder) {
         id= builder.id;
         name = builder.name;
         surname = builder.surname;
+        age= builder.age;
        }
      private LimitedMember(){}
      
@@ -37,6 +38,7 @@ public class LimitedMember implements Serializable {
         private Long id;
         private String name;
         private String surname;
+        private int age;
         public Builder(String value) {
             this.name = value;
            
@@ -47,6 +49,7 @@ public class LimitedMember implements Serializable {
             id = person.getId();
             name = person.getName();
             surname = person.getSurname();
+            age= person.getAge();
             return this;
             
         }
@@ -54,6 +57,12 @@ public class LimitedMember implements Serializable {
             surname = value;
             return this;
         }
+        public Builder age(int age)
+        {
+            this.age = age;
+            return this;
+        }
+        
         public LimitedMember build(){
             return new LimitedMember(this);
         }
@@ -70,6 +79,10 @@ public class LimitedMember implements Serializable {
     return surname;
     }
    
+    public int getAge(){
+        return age;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

@@ -22,36 +22,36 @@ public class Payment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-private String name;
-    private double price;
+private int memberID;
+    private double amount;
      
      private Payment(Builder builder) {
         id= builder.id;
-        name = builder.name;
-        price = builder.price;
+        memberID = builder.memberID;
+        amount = builder.amount;
        }
      private Payment(){}
      
      public static class Builder {
 
         private Long id;
-        private String name;
-        private double price;
-        public Builder(String value) {
-            this.name = value;
+        private int memberID;
+        private double amount;
+        public Builder(int value) {
+            this.memberID = value;
            
         }
         
        
         public Builder entity(Payment entity){
-            id = entity.getId();
-            name = entity.getName();
-            price = entity.getPrice();
+            id = entity.getpaymentId();
+            memberID = entity.getmemberID();
+            amount = entity.getAmount();
             return this;
             
         }
-        public Builder price(double value) {
-            price = value;
+        public Builder amount(double value) {
+            amount = value;
             return this;
         }
         public Payment build(){
@@ -60,14 +60,14 @@ private String name;
 
     }
 
-    public String getName() {
-        return name;
+    public int getmemberID() {
+        return memberID;
     }
-    public Long getId() {
+    public Long getpaymentId() {
         return id;
     }
-    public double getPrice(){
-    return price;
+    public double getAmount(){
+    return amount;
     }
    
 

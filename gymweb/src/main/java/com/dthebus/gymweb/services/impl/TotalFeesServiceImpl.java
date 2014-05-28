@@ -20,10 +20,46 @@ import org.springframework.stereotype.Service;
 @Service
 public class TotalFeesServiceImpl implements TotalFeesService{
 @Autowired
-    private FeesRepository fullMemberRepository;
+    private FeesRepository feeRepository;
     
     @Override
     public List<Fees> getTotal() {
-    return fullMemberRepository.findAll();    
+    return feeRepository.findAll();    
+    }
+
+    @Override
+    public double getPrice(String type) {
+    List<Fees> all = feeRepository.findAll();
+    for( Fees e: all)
+        if (e.getType().equals(type))
+            return e.getPrice();
+    return 0;
+    }
+
+    @Override
+    public Fees find(Long id) {
+    return feeRepository.findOne(id);
+    }
+
+    @Override
+    public Fees persist(Fees entity) {
+    return feeRepository.save(entity);
+    }
+
+    @Override
+    public Fees merge(Fees entity) {
+      if(entity.getId()!=null)
+          return feeRepository.save(entity);
+      return null;
+    }
+
+    @Override
+    public void remove(Fees entity) {
+    feeRepository.delete(entity);
+    }
+
+    @Override
+    public List<Fees> findAll() {
+    return feeRepository.findAll();
     }
 }

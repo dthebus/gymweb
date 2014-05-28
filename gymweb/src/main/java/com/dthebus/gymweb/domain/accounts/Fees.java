@@ -22,12 +22,12 @@ public class Fees implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-private String name;
+private String type;
     private double price;
      
      private Fees(Builder builder) {
         id= builder.id;
-        name = builder.name;
+        type = builder.type;
         price = builder.price;
        }
      private Fees(){}
@@ -35,17 +35,17 @@ private String name;
      public static class Builder {
 
         private Long id;
-        private String name;
+        private String type;
         private double price;
         public Builder(String value) {
-            this.name = value;
+            this.type = value;
            
         }
         
        
         public Builder entity(Fees entity){
             id = entity.getId();
-            name = entity.getName();
+            type = entity.getType();
             price = entity.getPrice();
             return this;
             
@@ -60,8 +60,8 @@ private String name;
 
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
     public Long getId() {
         return id;

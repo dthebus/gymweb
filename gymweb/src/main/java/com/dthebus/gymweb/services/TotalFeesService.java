@@ -13,6 +13,7 @@ import java.util.List;
  *
  * @author darren
  */
-public interface TotalFeesService {
+public interface TotalFeesService extends Services<Fees, Long>{
     public List<Fees> getTotal();
+    public double getPrice(String type);
 }

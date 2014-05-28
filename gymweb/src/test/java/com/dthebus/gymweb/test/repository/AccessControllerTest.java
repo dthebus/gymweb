@@ -6,13 +6,12 @@
 
 package com.dthebus.gymweb.test.repository;
 
-import com.dthebus.gymweb.app.conf.ConnectionConfig;
 import com.dthebus.gymweb.domain.employees.AccessController;
 import com.dthebus.gymweb.repository.AccessControllerRepository;
+import com.dthebus.gymweb.test.ConnectionConfigTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
-import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -68,7 +67,7 @@ public class AccessControllerTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+            ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
     }
 
     @AfterClass

@@ -9,6 +9,7 @@ package com.dthebus.gymweb.test.repository;
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
 import com.dthebus.gymweb.domain.accounts.Payment;
 import com.dthebus.gymweb.repository.PaymentRepository;
+import com.dthebus.gymweb.test.ConnectionConfigTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -35,9 +36,9 @@ public class PaymentTest {
       @Test
       public void createPayment() {
          repo = ctx.getBean(PaymentRepository.class);
-         Payment p = new Payment.Builder("USN").price(125.55).build();
+         Payment p = new Payment.Builder(2).amount(125.55).build();
          repo.save(p);
-         id = p.getId();
+         id = p.getpaymentId();
          Assert.assertNotNull(p);
       }
       
@@ -45,17 +46,17 @@ public class PaymentTest {
      public void readPayment(){
          repo = ctx.getBean(PaymentRepository.class);
          Payment entity = repo.findOne(id);
-         Assert.assertEquals(entity.getName(), "USN");
+         Assert.assertEquals(entity.getmemberID(), 2);
       }
      
-    @Test(dependsOnMethods = "readPayment")
+   @Test(dependsOnMethods = "readPayment")
      private void updatePayment(){
          repo = ctx.getBean(PaymentRepository.class);
          Payment entity = repo.findOne(id);
-         Payment updatedentity = new Payment.Builder("USN").entity(entity).price(126.25).build();
+         Payment updatedentity = new Payment.Builder(2).entity(entity).amount(126.25).build();
          repo.save(updatedentity);
          Payment updateEntity = repo.findOne(id);
-         Assert.assertEquals(updateEntity.getPrice(), 126.25);
+         Assert.assertEquals(updateEntity.getAmount(), 126.25);
      }
      
      @Test(dependsOnMethods = "updatePayment")
@@ -69,7 +70,7 @@ public class PaymentTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
     }
 
     @AfterClass

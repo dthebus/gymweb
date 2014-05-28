@@ -9,6 +9,7 @@ package com.dthebus.gymweb.test.repository;
 import com.dthebus.gymweb.app.conf.ConnectionConfig;
 import com.dthebus.gymweb.domain.accounts.Fees;
 import com.dthebus.gymweb.repository.FeesRepository;
+import com.dthebus.gymweb.test.ConnectionConfigTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -35,27 +36,27 @@ public class FeesTest {
       @Test
       public void createFees() {
          repo = ctx.getBean(FeesRepository.class);
-         Fees p = new Fees.Builder("USN").price(125.55).build();
+         Fees p = new Fees.Builder("Monthly").price(250.00).build();
          repo.save(p);
          id = p.getId();
          Assert.assertNotNull(p);
       }
       
-    @Test(dependsOnMethods = "createFees")
+   @Test(dependsOnMethods = "createFees")
      public void readFees(){
          repo = ctx.getBean(FeesRepository.class);
          Fees entity = repo.findOne(id);
-         Assert.assertEquals(entity.getName(), "USN");
+         Assert.assertEquals(entity.getType(), "Monthly");
       }
      
     @Test(dependsOnMethods = "readFees")
      private void updateFees(){
          repo = ctx.getBean(FeesRepository.class);
          Fees entity = repo.findOne(id);
-         Fees updatedentity = new Fees.Builder("USN").entity(entity).price(126.25).build();
+         Fees updatedentity = new Fees.Builder("Monthly").entity(entity).price(255.00).build();
          repo.save(updatedentity);
          Fees updateEntity = repo.findOne(id);
-         Assert.assertEquals(updateEntity.getPrice(), 126.25);
+         Assert.assertEquals(updateEntity.getPrice(), 255.00);
      }
      
      @Test(dependsOnMethods = "updateFees")
@@ -69,7 +70,7 @@ public class FeesTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
     }
 
     @AfterClass
