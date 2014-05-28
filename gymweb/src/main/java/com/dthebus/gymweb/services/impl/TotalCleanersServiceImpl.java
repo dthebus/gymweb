@@ -34,4 +34,8 @@ public class TotalCleanersServiceImpl implements TotalCleanersService{
           if(a.getId()==id)
               return a.getSalary();
       return 0; }
+    
+    public Cleaner persist(Cleaner entity) {
+     return cr.save(entity);
+    }
 }

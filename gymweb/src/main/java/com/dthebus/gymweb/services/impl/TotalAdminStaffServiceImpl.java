@@ -34,4 +34,9 @@ public class TotalAdminStaffServiceImpl implements TotalAdminStaffService{
           if(a.getId()==id)
               return a.getSalary();
       return 0;}
+    
+    @Override
+    public AdminStaff persist(AdminStaff entity) {
+     return asr.save(entity);
+    }
 }

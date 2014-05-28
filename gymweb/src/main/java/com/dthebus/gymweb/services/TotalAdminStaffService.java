@@ -16,4 +16,5 @@ import java.util.List;
 public interface TotalAdminStaffService {
     public List<AdminStaff> getTotal();
      public double getSalary(int id);
+      public AdminStaff persist(AdminStaff entity);
 }

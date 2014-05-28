@@ -16,4 +16,5 @@ import java.util.List;
 public interface TotalLimitedMembersService {
      public List<LimitedMember> getTotalPeople();
      public List<LimitedMember> getTotalmembersUnderageof(int age);
+      public LimitedMember persist(LimitedMember entity);
 }

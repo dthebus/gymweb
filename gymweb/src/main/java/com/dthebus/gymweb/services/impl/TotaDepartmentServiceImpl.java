@@ -26,6 +26,7 @@ public class TotaDepartmentServiceImpl implements TotalDepartmentService{
     public List<Department> getTotal() {
     return dr.findAll();    
     }
+@Override
     public Department persist(Department entity) {
      return dr.save(entity);
     }

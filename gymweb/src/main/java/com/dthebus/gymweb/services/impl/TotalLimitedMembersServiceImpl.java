@@ -38,4 +38,8 @@ public class TotalLimitedMembersServiceImpl implements TotalLimitedMembersServic
         }
         return membersunderageof;
     }
+    
+     public LimitedMember persist(LimitedMember entity) {
+     return limitedMemberRepository.save(entity);
+    }
 }

@@ -16,4 +16,5 @@ import java.util.List;
 public interface TotalPersonalTrainersService {
     public List<PersonalTrainer> getTotal();
      public double getSalary(int id);
+      public PersonalTrainer persist(PersonalTrainer entity);
 }

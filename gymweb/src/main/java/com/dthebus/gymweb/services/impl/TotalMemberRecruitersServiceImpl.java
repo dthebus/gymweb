@@ -34,5 +34,10 @@ public class TotalMemberRecruitersServiceImpl implements TotalMemberRecruitersSe
           if(a.getId()==id)
               return a.getSalary();
       return 0;}
+
+    @Override
+    public MemberRecruiter persist(MemberRecruiter entity) {
+      return mrr.save(entity);
+    }
     }
 

@@ -34,4 +34,8 @@ public class TotalManagersServiceImpl implements TotalManagersService{
           if(a.getId()==id)
               return a.getSalary();
       return 0;}
+    
+    public Manager persist(Manager entity) {
+     return mr.save(entity);
+    }
 }

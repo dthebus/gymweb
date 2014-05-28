@@ -16,4 +16,5 @@ import java.util.List;
 public interface TotalClassInstructorsService {
     public List<ClassInstructor> getTotal();
      public double getSalary(int id);
+      public ClassInstructor persist(ClassInstructor entity);
 }

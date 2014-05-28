@@ -20,19 +20,24 @@ import org.springframework.stereotype.Service;
 @Service
 public class TotalTrainersServiceImpl implements TotalTrainersService{
 @Autowired
-    private TrainerRepository fullMemberRepository;
+    private TrainerRepository tr;
     
     @Override
     public List<Trainer> getTotal() {
-    return fullMemberRepository.findAll();    
+    return tr.findAll();    
     }
 
     @Override
     public double getSalary(int id) {
-      List<Trainer> all = fullMemberRepository.findAll();
+      List<Trainer> all = tr.findAll();
       for(Trainer a : all)
           if(a.getId()==id)
               return a.getSalary();
       return 0;
+    }
+    
+@Override
+     public Trainer persist(Trainer entity) {
+     return tr.save(entity);
     }
 }

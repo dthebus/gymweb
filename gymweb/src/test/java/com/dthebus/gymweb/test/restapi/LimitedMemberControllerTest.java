@@ -6,8 +6,7 @@
 
 package com.dthebus.gymweb.test.restapi;
 
-import com.dthebus.gymweb.domain.accounts.Payment;
-import com.dthebus.gymweb.domain.department.Department;
+import com.dthebus.gymweb.domain.members.LimitedMember;
 import java.util.Collections;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -24,20 +23,20 @@ import org.testng.annotations.Test;
  *
  * @author darren
  */
-public class PaymentControllerTest {
+public class LimitedMemberControllerTest {
     
-    public PaymentControllerTest() {
+    public LimitedMemberControllerTest() {
     }
-    private RestTemplate restTemplate = new RestTemplate();
+     private RestTemplate restTemplate = new RestTemplate();
    private final static String URL = "http://localhost:8084/gymweb/";
    
-   //@Test
+   @Test
    public void testCreate(){
-       Payment d = new Payment.Builder(2).build();
-       HttpEntity<Payment> requestEntity = new HttpEntity<>(d, getContentType());
+       LimitedMember d = new LimitedMember.Builder("Dave").build();
+       HttpEntity<LimitedMember> requestEntity = new HttpEntity<>(d, getContentType());
   
    ResponseEntity<String> responseEntity = restTemplate.
-           exchange(URL+"api/payments/create", HttpMethod.POST, requestEntity, String.class);
+           exchange(URL+"api/limited/create", HttpMethod.POST, requestEntity, String.class);
            Assert.assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
    }
     private HttpEntity<?> getHttpEntity() {

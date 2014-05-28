@@ -34,4 +34,8 @@ public class TotalPersonalTrainersServiceImpl implements TotalPersonalTrainersSe
           if(a.getId()==id)
               return a.getSalary();
       return 0;}
+    
+     public PersonalTrainer persist(PersonalTrainer entity) {
+     return ptr.save(entity);
+    }
 }

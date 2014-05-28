@@ -16,4 +16,5 @@ import java.util.List;
 public interface TotalAccessControllersService {
     public List<AccessController> getTotal();
      public double getSalary(int id);
+      public AccessController persist(AccessController entity);
 }

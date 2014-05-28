@@ -34,4 +34,9 @@ public class TotalClassInstructorsServiceImpl implements TotalClassInstructorsSe
           if(a.getId()==id)
               return a.getSalary();
       return 0;}
+    
+@Override
+    public ClassInstructor persist(ClassInstructor entity) {
+     return cir.save(entity);
+    }
 }

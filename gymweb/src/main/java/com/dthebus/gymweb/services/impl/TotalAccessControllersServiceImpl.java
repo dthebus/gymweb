@@ -34,4 +34,9 @@ public class TotalAccessControllersServiceImpl implements TotalAccessControllers
           if(a.getId()==id)
               return a.getSalary();
       return 0;}
+    
+    @Override
+    public AccessController persist(AccessController entity) {
+     return acr.save(entity);
+    }
 }
